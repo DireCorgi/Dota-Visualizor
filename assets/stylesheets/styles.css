@@ -1,0 +1,8 @@
+.chart rect {
+  fill: steelblue;
+}
+
+.chart text {
+  font: 14px sans-serif;
+  text-anchor: end;
+}
