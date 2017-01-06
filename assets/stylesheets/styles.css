@@ -1,8 +1,31 @@
 .chart rect {
-  fill: steelblue;
+  fill: #ec6e6e;
 }
 
 .chart text {
   font: 14px sans-serif;
   text-anchor: end;
+}
+
+rect.color-green {
+  fill: #29f200;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.tick text {
+  font: 10px sans-serif;
+}
+
+#match-id {
+  border: 1px solid black;
 }
