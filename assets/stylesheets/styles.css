@@ -1,6 +1,7 @@
 svg {
-  margin: 10px auto;
+  margin: 24px auto;
   display: block;
+  border: 1px solid #1C242D;
 }
 
 .chart rect {

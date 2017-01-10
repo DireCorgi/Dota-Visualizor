@@ -11,6 +11,7 @@ header {
   background: url('../images/dota-header.jpg') -10px;
   background-size: cover;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 header > h1 {
@@ -28,6 +29,9 @@ header > h1 {
   background: url('../images/pa-header.jpg');
   background-size: cover;
   text-shadow: 0 0 5px black;
+  width: 1000px;
+  margin: auto;
+  border: 1px solid #1C242D;
 }
 
 .input-area > h2 {
@@ -79,5 +83,41 @@ main {
 }
 
 footer {
+  background: #1C242D;
+  overflow: hidden;
+}
 
+footer > img {
+  width: 32px;
+  float: left;
+  padding: 15px;
+}
+
+footer > h2 {
+  margin: 20px 10px;
+  float: left;
+}
+
+footer > h2 > strong {
+  color: #fff9ac;
+}
+
+.made-by-links {
+  float: right;
+  margin-right: 20px;
+}
+
+.made-by-links > h3 {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.made-by-links > a {
+  width: 32px;
+  float: right;
+  margin: 12px 2px;
+}
+
+.made-by-links > a > img {
+  width: 100%;
 }
