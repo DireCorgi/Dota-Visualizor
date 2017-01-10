@@ -1,0 +1,83 @@
+body {
+  background: #242F39;
+  color: #CCCCCC;
+  font-family: 'Cinzel', serif;
+  min-width: 1200px;
+  height: 100vh;
+}
+
+
+header {
+  background: url('../images/dota-header.jpg') -10px;
+  background-size: cover;
+  text-align: center;
+}
+
+header > h1 {
+  font-size: 36px;
+  color: #eee;
+  text-shadow: 0 0 5px black;
+  padding: 10px;
+  background-color: rgba(0,0,0,.2);
+  border-bottom: 1px solid black;
+}
+
+.input-area {
+  text-align: center;
+  color: white;
+  background: url('../images/pa-header.jpg');
+  background-size: cover;
+  text-shadow: 0 0 5px black;
+}
+
+.input-area > h2 {
+  background: rgba(0,0,0,.3);
+}
+
+.input-area > label {
+  display: block;
+  font-size: 16px;
+  color: #A0CF54;
+  font-weight: bold;
+  background: rgba(0,0,0,.3);
+  padding-top: 5px;
+}
+
+.input-area > label > input {
+  display: block;
+  margin: auto;
+  background: #1C242D;
+  border: 1px solid #1D252E;
+  text-shadow: 0 0 0;
+  color: #CCCCCC;
+  font-weight: normal;
+  padding: 5px 8px;
+}
+
+.input-area > label > input:focus {
+  background: #242F39;
+}
+
+.graph-buttons {
+  background: rgba(0,0,0,.3);
+}
+
+.graph-buttons > button {
+  padding: 5px 12px;
+  background: #345448;
+  box-shadow: 1px 1px 2px black;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+.graph-buttons > button:hover {
+  background: #234136;
+}
+
+main {
+  min-height: 90%;
+}
+
+footer {
+
+}

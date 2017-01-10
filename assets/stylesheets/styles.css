@@ -1,3 +1,8 @@
+svg {
+  margin: 10px auto;
+  display: block;
+}
+
 .chart rect {
   fill: #FF0017;
 }
@@ -24,10 +29,6 @@ rect.color-green {
 
 .tick text {
   font: 10px sans-serif;
-}
-
-#match-id {
-  border: 1px solid black;
 }
 
 text.title-text {

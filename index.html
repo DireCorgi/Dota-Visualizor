@@ -2,28 +2,34 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>DOTA Visualizor</title>
+    <title>DOTA Stat Visualizor</title>
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/stylesheets/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/stylesheets/page-styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cinzel:400,700" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="./bundle.js"></script>
   </head>
   <body>
     <header>
-      <h1>DOTA Visualizor</h1>
-      <h2>Some Sample Ids: 2897031146 2883822225</h2>
+      <h1>DOTA Stat Visualizor</h1>
     </header>
     <main>
       <section class="input-area">
-        <label>Enter Match Id
-          <input type="text" value="" id="match-id"/>
+        <label>Enter a Match ID
+          <input type="text" value="" id="match-id" placeholder="2890465108">
         </label>
-        <button id="graph-gold">Graph Gold/Exp Advantages</button>
+        <nav class="graph-buttons">
+          <button id="graph-gold">GET DATA</button>
+          <section class="graph-options hidden">
+          </section>
+        </nav>
       </section>
       <section class="chart">
       </section>
     </main>
     <footer>
+      <h2>Some Sample Ids: 2897031146 2883822225</h2>
       Made by Frank Ye
     </footer>
   </body>
