@@ -58,23 +58,56 @@ text.dire {
 
 .game-stat-table {
   font-family: sans-serif;
-  font-size: 12px;
-  margin: auto;
+  font-size: 16px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  border: 1px solid #1C242D;
 }
 
-th {
+.game-stat-table > thead {
+  background: #222;
+}
+
+.game-stat-table th {
   text-align: left;
   font-family: 'Cinzel', serif;
 }
 
-th, td {
-  padding: 4px 8px;
+.game-stat-table th, td {
+  padding: 10px 16px;
+}
+
+.game-stat-table td {
+  border-bottom: 3px solid #242F39;
+}
+
+.game-stat-table tr > td:first-child {
+  color: white;
+  text-shadow: 0px 0px 2px #0a0a0a;
+  width: 50px;
+  background-size: cover;
 }
 
 .radiant {
-  background: #118728;
+  background: #313C36;
+}
+
+.radiant:nth-child(2n) {
+  background: #2B3638;
+}
+
+.radiant > td:nth-child(3) {
+  color: #92A525;
 }
 
 .dire {
-  background: #8B0007;
+  background: #373037;
+}
+
+.dire:nth-child(2n) {
+  background: #2D3038;
+}
+
+.dire > td:nth-child(3) {
+  color: #C23C2A;
 }
