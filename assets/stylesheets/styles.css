@@ -2,10 +2,13 @@ svg {
   margin: 24px auto;
   display: block;
   border: 1px solid #1C242D;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .chart rect {
   fill: #FF0017;
+  stroke: black;
 }
 
 .chart text {
@@ -33,12 +36,13 @@ rect.color-green {
 }
 
 text.title-text {
-  color: black;
+  fill: #eee;
   font-size: 24px;
   font-family: sans-serif;
 }
 
 text.label-text {
+  fill: #eee;
   font-size: 14px;
   font-family: sans-serif;
 }
@@ -56,12 +60,29 @@ text.dire {
   fill: #8B0007;
 }
 
+path.domain {
+  stroke: #525252;
+}
+
+.tick > line {
+  stroke: #525252;
+}
+
+.tick > text {
+  font-size: 12px;
+  fill: #525252;
+}
+
 .game-stat-table {
   font-family: sans-serif;
   font-size: 16px;
   margin: 20px auto;
   border-collapse: collapse;
   border: 1px solid #1C242D;
+  min-width: 200px;
+  min-height: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .game-stat-table > thead {
