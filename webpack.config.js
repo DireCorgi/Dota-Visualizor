@@ -1,9 +1,10 @@
+var webpack = require("webpack");
+
 module.exports = {
   entry: "./lib/dota.js",
   output: {
     filename: "./bundle.js"
   },
-  devtool: 'source-map',
   resolve: {
     extensions: ["", ".js"]
   },
@@ -20,4 +21,7 @@ module.exports = {
       }
     ]
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({minimize: true})
+  ],
 };
