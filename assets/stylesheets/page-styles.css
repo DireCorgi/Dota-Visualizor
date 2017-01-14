@@ -72,6 +72,17 @@ header > h1 {
   box-shadow: 1px 1px 2px black;
   margin: 10px;
   border-radius: 2px;
+  width: 90px;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out;
+}
+
+button.hidden {
+  display: none;
+}
+
+button.clear {
+  opacity: 0;
 }
 
 .graph-buttons > button:hover {
