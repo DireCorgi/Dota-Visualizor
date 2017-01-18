@@ -6,6 +6,12 @@ svg {
   background-repeat: no-repeat;
 }
 
+div.player-area {
+  position: relative;
+  margin: auto;
+  width: 1002px;
+}
+
 path.line {
     stroke: #fbf56d;
     stroke-width: 2;
@@ -95,7 +101,7 @@ text.title-text {
 
 text.label-text {
   fill: #eee;
-  font-size: 14px;
+  font-size: 16px;
   font-family: sans-serif;
 }
 
@@ -205,4 +211,55 @@ text.Radiant-text {
 
 text.Dire-text {
   color: #8B0007;
+}
+
+table.player-legend {
+  position: absolute;
+  top: 150px;
+  left: 7px;
+}
+
+.player-legend div {
+  border-radius: 2px;
+  margin: 1px;
+}
+
+.player-legend-0 {
+  background-color: #0042ff;
+}
+
+.player-legend-1 {
+  background-color: #1ce6b9;
+}
+
+.player-legend-2 {
+  background-color: #540081;
+}
+
+.player-legend-3 {
+  background-color: #fffc01;
+}
+
+.player-legend-4 {
+  background-color: #ff8000;
+}
+
+.player-legend-5 {
+  background-color: #e55bb0;
+}
+
+.player-legend-6 {
+  background-color: #959697;
+}
+
+.player-legend-7 {
+  background-color: #7ebff1;
+}
+
+.player-legend-8 {
+  background-color: #20c000;
+}
+
+.player-legend-9 {
+  background-color: #4e2a04;
 }

@@ -29712,7 +29712,7 @@
 	    return className;
 	  });
 	
-	  var cells = rows.selectAll('td').data(function (row) {
+	  rows.selectAll('td').data(function (row) {
 	    return columns.map(function (column) {
 	      var value = row[column];
 	      if (column === 'Hero') {
@@ -30286,7 +30286,13 @@
 	
 	var d3 = _interopRequireWildcard(_d);
 	
+	var _hero_ids = __webpack_require__(9);
+	
+	var _hero_ids2 = _interopRequireDefault(_hero_ids);
+	
 	var _util = __webpack_require__(10);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
@@ -30304,7 +30310,8 @@
 	      data = _getPlayersNetWorth.data,
 	      maximum = _getPlayersNetWorth.maximum;
 	
-	  var chart = d3.select('section.chart').append('svg').attr('width', width).attr('height', height).attr('id', id).style('background-color', 'rgb(36, 47, 57)');
+	  var chartArea = d3.select('section.chart').append('div').attr('class', 'player-area');
+	  var chart = chartArea.append('svg').attr('width', width).attr('height', height).attr('id', id).style('background-color', 'rgb(36, 47, 57)');
 	
 	  var time = data[0].gold.length - 1;
 	  var xScale = d3.scaleLinear().domain([0, time]).range([xOffset, width - 10]);
@@ -30332,7 +30339,27 @@
 	  yAxis(verticalGuide);
 	  verticalGuide.attr('transform', 'translate(' + xOffset + ', 0)');
 	
+	  var legend = chartArea.append('table').attr('class', 'player-legend').append('tbody');
+	  var legendData = data.map(function (playerData) {
+	    return playerData.hero;
+	  });
+	  var legendRows = legend.selectAll('tr').data(legendData).enter().append('tr');
+	
+	  var rowIdx = -1;
+	
+	  legendRows.selectAll('div').data(function (dateum) {
+	    return [dateum];
+	  }).enter().append('div').text("").attr('class', function (dateum) {
+	    rowIdx += 1;
+	    var heroName = _hero_ids2.default[dateum - 1].localized_name;
+	    heroName = heroName.toLowerCase();
+	    heroName = heroName.replace(/ /g, "_");
+	    return 'miniheroes-sprite-' + heroName + ' player-legend-' + rowIdx;
+	  });
+	
 	  chart.append('text').attr('x', xOffset + 20 + width / 2).attr('y', 40).attr('text-anchor', 'middle').attr('class', 'title-text').text('Net Worth By Player');
+	
+	  chart.append('text').attr('x', xOffset + width / 2).attr('y', height - 25).attr('text-anchor', 'middle').attr('class', 'label-text').text('Game Time (min)');
 	};
 	
 	exports.default = graphAllPlayerNetWorth;
