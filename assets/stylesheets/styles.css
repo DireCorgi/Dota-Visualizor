@@ -6,6 +6,12 @@ svg {
   background-repeat: no-repeat;
 }
 
+path.line {
+    stroke: #fbf56d;
+    stroke-width: 2;
+    fill: none;
+}
+
 .chart rect {
   fill: #FF0017;
   stroke: black;
