@@ -15,6 +15,7 @@ path.line {
 path.player-line {
   stroke: #45e9ff;
   stroke-width: 2;
+  fill: none;
 }
 
 path.player-0 {
