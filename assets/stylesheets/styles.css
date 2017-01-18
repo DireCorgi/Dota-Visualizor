@@ -12,8 +12,53 @@ path.line {
     fill: none;
 }
 
+path.player-line {
+  stroke: #45e9ff;
+  stroke-width: 2;
+}
+
+path.player-0 {
+  stroke: #0042ff;
+}
+
+path.player-1 {
+  stroke: #1ce6b9;
+}
+
+path.player-2 {
+  stroke: #540081;
+}
+
+path.player-3 {
+  stroke: #fffc01;
+}
+
+path.player-4 {
+  stroke: #ff8000;
+}
+
+path.player-5 {
+  stroke: #e55bb0;
+}
+
+path.player-6 {
+  stroke: #959697;
+}
+
+path.player-7 {
+  stroke: #7ebff1;
+}
+
+path.player-8 {
+  stroke: #20c000;
+}
+
+path.player-9 {
+  stroke: #4e2a04;
+}
+
 .chart rect {
-  fill: #FF0017;
+  fill: #A83806;
   stroke: black;
 }
 
@@ -23,7 +68,7 @@ path.line {
 }
 
 rect.color-green {
-  fill: #2AFE52;
+  fill: #598307;
 }
 
 .axis path,
@@ -59,11 +104,11 @@ text.y-label {
 }
 
 text.radiant {
-  fill: #118728;
+  fill: #598307;
 }
 
 text.dire {
-  fill: #8B0007;
+  fill: #A83806;
 }
 
 path.domain {

@@ -94,6 +94,10 @@
 	
 	var _win_text2 = _interopRequireDefault(_win_text);
 	
+	var _graph_player = __webpack_require__(12);
+	
+	var _graph_player2 = _interopRequireDefault(_graph_player);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -193,6 +197,12 @@
 	      chart: svg2,
 	      title: "XP Advantage",
 	      xAxisLabel: "Game Time (min)"
+	    });
+	
+	    (0, _graph_player2.default)({
+	      playersData: dotaData.players,
+	      height: height, width: width,
+	      id: 'networth-area'
 	    });
 	
 	    _graphAdvantage({ dotaData: dotaData, graphGold: graphGold, graphXp: graphXp });
@@ -30204,7 +30214,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.parsePlayers = undefined;
+	exports.getPlayersNetWorth = exports.parsePlayers = undefined;
 	
 	var _d = __webpack_require__(6);
 	
@@ -30233,6 +30243,19 @@
 	    };
 	  });
 	};
+	
+	var getPlayersNetWorth = exports.getPlayersNetWorth = function getPlayersNetWorth(players) {
+	  var maximum = 0;
+	  var data = players.map(function (player) {
+	    var curMax = player.gold_t[player.gold_t.length - 1];
+	    if (curMax > maximum) maximum = curMax;
+	    return {
+	      hero: player.hero_id,
+	      gold: player.gold_t
+	    };
+	  });
+	  return { data: data, maximum: maximum };
+	};
 
 /***/ },
 /* 11 */
@@ -30248,6 +30271,71 @@
 	};
 	
 	exports.default = drawWinText;
+
+/***/ },
+/* 12 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _d = __webpack_require__(6);
+	
+	var d3 = _interopRequireWildcard(_d);
+	
+	var _util = __webpack_require__(10);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var graphAllPlayerNetWorth = function graphAllPlayerNetWorth(options) {
+	  var playersData = options.playersData,
+	      width = options.width,
+	      height = options.height,
+	      id = options.id;
+	
+	  var xOffset = 80;
+	
+	  if (id) d3.select('#' + id).remove();
+	
+	  var _getPlayersNetWorth = (0, _util.getPlayersNetWorth)(playersData),
+	      data = _getPlayersNetWorth.data,
+	      maximum = _getPlayersNetWorth.maximum;
+	
+	  var chart = d3.select('section.chart').append('svg').attr('width', width).attr('height', height).attr('id', id).style('background-color', 'rgb(36, 47, 57)');
+	
+	  var time = data[0].gold.length - 1;
+	  var xScale = d3.scaleLinear().domain([0, time]).range([xOffset, width - 10]);
+	  var yScale = d3.scaleLinear().domain([0, maximum]).range([height - 80, 80]).nice();
+	
+	  var valueline = d3.line().x(function (d, i) {
+	    return xScale(i);
+	  }).y(function (d) {
+	    return yScale(d);
+	  }).curve(d3.curveCardinal.tension(0.65));
+	
+	  data.forEach(function (playerData, idx) {
+	    var gold = playerData.gold;
+	    chart.append('path').attr('class', 'player-line player-' + idx).attr('d', valueline(gold));
+	  });
+	
+	  var xAxis = d3.axisBottom(xScale).tickArguments([10]);
+	  var horizontalGuide = chart.append('g');
+	  horizontalGuide.attr('transform', 'translate(0, 620)');
+	  xAxis(horizontalGuide);
+	  horizontalGuide.selectAll('text').attr('x', '5');
+	
+	  var yAxis = d3.axisLeft(yScale).tickArguments([12, 's']);
+	  var verticalGuide = chart.append('g');
+	  yAxis(verticalGuide);
+	  verticalGuide.attr('transform', 'translate(' + xOffset + ', 0)');
+	
+	  chart.append('text').attr('x', xOffset + 20 + width / 2).attr('y', 40).attr('text-anchor', 'middle').attr('class', 'title-text').text('Net Worth By Player');
+	};
+	
+	exports.default = graphAllPlayerNetWorth;
 
 /***/ }
 /******/ ]);
