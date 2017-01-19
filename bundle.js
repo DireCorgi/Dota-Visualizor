@@ -176,6 +176,7 @@
 	
 	  var clearGraphs = function clearGraphs(e) {
 	    d3.select('section.chart').selectAll('svg').remove();
+	    d3.select('section.chart').selectAll('div.player-area').remove();
 	  };
 	
 	  var handleGraphAdv = function handleGraphAdv(e) {
