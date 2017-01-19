@@ -199,12 +199,23 @@
 	      title: "XP Advantage",
 	      xAxisLabel: "Game Time (min)"
 	    });
-	
-	    (0, _graph_player2.default)({
-	      playersData: dotaData.players,
-	      height: height, width: width,
-	      id: 'networth-area'
-	    });
+	    if (dotaData.players) {
+	      (0, _graph_player2.default)({
+	        playersData: dotaData.players,
+	        height: height,
+	        width: width,
+	        id: 'networth-area'
+	      });
+	    } else {
+	      dotaData.then(function (data) {
+	        (0, _graph_player2.default)({
+	          playersData: data.players,
+	          height: height,
+	          width: width,
+	          id: 'networth-area'
+	        });
+	      });
+	    }
 	
 	    _graphAdvantage({ dotaData: dotaData, graphGold: graphGold, graphXp: graphXp });
 	    $('html, body').animate({
