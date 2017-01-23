@@ -263,3 +263,28 @@ table.player-legend {
 .player-legend-9 {
   background-color: #4e2a04;
 }
+
+.hover-highlight {
+  opacity: 0.8;
+  position: relative;
+}
+
+.hover-highlight:hover {
+  opacity: 1;
+}
+
+.hidden-hero-text {
+  display: none;
+  cursor: default;
+  position: absolute;
+  right: 140%;
+  font-family: sans-serif;
+  top: 20%;
+  text-align: right;
+  white-space:nowrap;
+  font-size: 14px;
+}
+
+.hover-highlight:hover > .hidden-hero-text {
+  display: block;
+}

@@ -30335,14 +30335,10 @@
 	    return yScale(d);
 	  }).curve(d3.curveCardinal.tension(0.65));
 	
-	  var t = d3.transition().duration(900).ease(d3.easeLinear);
-	
 	  data.forEach(function (playerData, idx) {
 	    var gold = playerData.gold;
-	    chart.append('path').attr('class', 'player-line player-' + idx).attr('d', valueline(gold)).style('opacity', '0');
+	    chart.append('path').attr('class', 'player-line player-' + idx + ' hover-highlight').attr('d', valueline(gold));
 	  });
-	
-	  d3.selectAll('.player-line').transition(t).style('opacity', '1');
 	
 	  var xAxis = d3.axisBottom(xScale).tickArguments([10]);
 	  var horizontalGuide = chart.append('g');
@@ -30365,13 +30361,15 @@
 	
 	  legendRows.selectAll('div').data(function (dateum) {
 	    return [dateum];
-	  }).enter().append('div').text("").attr('class', function (dateum) {
+	  }).enter().append('div').text('').attr('class', function (dateum) {
 	    rowIdx += 1;
 	    var heroName = _hero_ids2.default[dateum - 1].localized_name;
 	    heroName = heroName.toLowerCase();
 	    heroName = heroName.replace(/ /g, "_");
-	    return 'miniheroes-sprite-' + heroName + ' player-legend-' + rowIdx;
-	  });
+	    return 'miniheroes-sprite-' + heroName + ' player-legend-' + rowIdx + ' hover-highlight';
+	  }).append('div').text(function (dateum) {
+	    return _hero_ids2.default[dateum - 1].localized_name;
+	  }).attr('class', 'hidden-hero-text');
 	
 	  chart.append('text').attr('x', xOffset + 20 + width / 2).attr('y', 40).attr('text-anchor', 'middle').attr('class', 'title-text').text('Net Worth By Player');
 	
