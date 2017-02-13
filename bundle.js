@@ -30482,7 +30482,7 @@
 	    chart.append('line').attr('class', 'item-line').attr('x1', xOffset).attr('x2', width - 40).attr('y1', yScale(idx)).attr('y2', yScale(idx));
 	
 	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', function (d) {
-	      if (idx > 4) {
+	      if (idx < 5) {
 	        return 'item-dot radiant-dot';
 	      } else {
 	        return 'item-dot dire-dot';
