@@ -30459,6 +30459,8 @@
 	    }).attr('cy', yScale(idx)).on('mouseover', function (d) {
 	      tooltip.transition().duration(200).style('opacity', 0.9);
 	      tooltip.html(d.key).style('left', d3.event.pageX + 10 + 'px').style('top', d3.event.pageY - 30 + 'px');
+	    }).on('mouseout', function (d) {
+	      tooltip.transition().duration(300).style('opacity', 0);
 	    });
 	  });
 	};
