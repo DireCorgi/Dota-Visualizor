@@ -288,3 +288,19 @@ table.player-legend {
 .hover-highlight:hover > .hidden-hero-text {
   display: block;
 }
+
+.item-dot {
+  stroke: black;
+}
+
+.radiant-dot {
+  fill:#8CA525;
+}
+
+.dire-dot {
+  fill: #C23C2D;
+}
+
+.item-tooltip {
+  position: absolute;
+}

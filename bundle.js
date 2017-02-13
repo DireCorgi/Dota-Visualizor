@@ -30445,10 +30445,21 @@
 	
 	  var yScale = d3.scaleLinear().domain([0, 9]).range([height - 80, 80]);
 	
+	  var tooltip = d3.select('.item-area').append('div').attr('class', 'item-tooltip').style('opacity', 0);
+	
 	  data.forEach(function (purchaseLog, idx) {
-	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', 'dot').attr('r', 3.5).attr('cx', function (d) {
+	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', function (d) {
+	      if (idx > 4) {
+	        return 'item-dot radiant-dot';
+	      } else {
+	        return 'item-dot dire-dot';
+	      }
+	    }).attr('r', 8).attr('cx', function (d) {
 	      return xScale(d.time);
-	    }).attr('cy', yScale(idx));
+	    }).attr('cy', yScale(idx)).on('mouseover', function (d) {
+	      tooltip.transition().duration(200).style('opacity', 0.9);
+	      tooltip.html(d.key).style('left', d3.event.pageX + 10 + 'px').style('top', d3.event.pageY - 30 + 'px');
+	    });
 	  });
 	};
 	
