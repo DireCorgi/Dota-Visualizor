@@ -6,15 +6,14 @@ module.exports = {
     filename: "./bundle.js"
   },
   resolve: {
-    extensions: ["", ".js"]
+    extensions: ["", ".js" ]
   },
   module: {
-  loaders:
-    [
+    loaders: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: "babel-loader",
+        test: [/\.js?$/],
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
         query: {
           presets: ['es2015']
         }

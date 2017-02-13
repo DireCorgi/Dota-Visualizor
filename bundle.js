@@ -98,6 +98,10 @@
 	
 	var _graph_player2 = _interopRequireDefault(_graph_player);
 	
+	var _graph_items = __webpack_require__(13);
+	
+	var _graph_items2 = _interopRequireDefault(_graph_items);
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -240,9 +244,30 @@
 	    _createTable({ dotaData: dotaData, textArea: textArea, table: table });
 	  };
 	
+	  var graphItems = function graphItems(e) {
+	    if (dotaData.players) {
+	      (0, _graph_items2.default)({
+	        playersData: dotaData.players,
+	        height: height,
+	        width: width,
+	        id: 'items-area'
+	      });
+	    } else {
+	      dotaData.then(function (data) {
+	        (0, _graph_items2.default)({
+	          playersData: data.players,
+	          height: height,
+	          width: width,
+	          id: 'items-area'
+	        });
+	      });
+	    }
+	  };
+	
 	  buttons.dataButton.addEventListener('click', handleGetData);
 	  buttons.advButton.addEventListener('click', handleGraphAdv);
 	  buttons.clearButton.addEventListener('click', clearGraphs);
+	  buttons.itemButton.addEventListener('click', graphItems);
 	};
 	
 	exports.default = setButtons;
@@ -260,7 +285,8 @@
 	  var dataButton = document.getElementById('get-data');
 	  var advButton = document.getElementById('graph-advantage');
 	  var clearButton = document.getElementById('clear-button');
-	  return { dataButton: dataButton, advButton: advButton, clearButton: clearButton };
+	  var itemButton = document.getElementById('item-button');
+	  return { dataButton: dataButton, advButton: advButton, clearButton: clearButton, itemButton: itemButton };
 	};
 	
 	exports.default = getButtons;
@@ -30377,6 +30403,56 @@
 	};
 	
 	exports.default = graphAllPlayerNetWorth;
+
+/***/ },
+/* 13 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _d = __webpack_require__(6);
+	
+	var d3 = _interopRequireWildcard(_d);
+	
+	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+	
+	var graphItemProgression = function graphItemProgression(options) {
+	  var playersData = options.playersData,
+	      width = options.width,
+	      height = options.height,
+	      id = options.id;
+	
+	  var xOffset = 80;
+	
+	  if (id) d3.select('#' + id).remove();
+	  var chartArea = d3.select('section.chart').append('div').attr('class', 'item-area');
+	  var chart = chartArea.append('svg').attr('width', width).attr('height', height).attr('id', id).style('background-color', 'rgb(36, 47, 57)');
+	  var data = playersData.map(function (playerData) {
+	    return playerData.purchase_log;
+	  });
+	
+	  var maxTime = 0;
+	  data.forEach(function (dateum) {
+	    var curTime = dateum[dateum.length - 1].time;
+	    if (curTime > maxTime) maxTime = curTime;
+	  });
+	
+	  var xScale = d3.scaleLinear().domain([-120, maxTime]).range([xOffset, width - 10]);
+	
+	  var yScale = d3.scaleLinear().domain([0, 9]).range([height - 80, 80]);
+	
+	  data.forEach(function (purchaseLog, idx) {
+	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', 'dot').attr('r', 3.5).attr('cx', function (d) {
+	      return xScale(d.time);
+	    }).attr('cy', yScale(idx));
+	  });
+	};
+	
+	exports.default = graphItemProgression;
 
 /***/ }
 /******/ ]);
