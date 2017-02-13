@@ -268,16 +268,16 @@
 .miniheroes-sprite-monkey_king_alt1 {
     background-position: -256px -64px;
 }
-.miniheroes-sprite-morphling, .miniheroes-sprite-naga_siren, .miniheroes-sprite-necrolyte {
+.miniheroes-sprite-morphling, .miniheroes-sprite-naga_siren, .miniheroes-sprite-necrophos {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: 0 0;
     width: 32px;
     height: 32px;
 }
-.miniheroes-sprite-naga_siren, .miniheroes-sprite-necrolyte {
+.miniheroes-sprite-naga_siren, .miniheroes-sprite-necrophos {
     background-position: -256px -128px;
 }
-.miniheroes-sprite-necrolyte {
+.miniheroes-sprite-necrophos {
     background-position: -256px -160px;
 }
 .miniheroes-sprite-nevermore, .miniheroes-sprite-nevermore_alt1, .miniheroes-sprite-night_stalker {
@@ -385,16 +385,16 @@
 .miniheroes-sprite-shadow_shaman {
     background-position: -160px -288px;
 }
-.miniheroes-sprite-shredder, .miniheroes-sprite-silencer, .miniheroes-sprite-skeleton_king {
+.miniheroes-sprite-shredder, .miniheroes-sprite-silencer, .miniheroes-sprite-wraith_king {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -192px -288px;
     width: 32px;
     height: 32px;
 }
-.miniheroes-sprite-silencer, .miniheroes-sprite-skeleton_king {
+.miniheroes-sprite-silencer, .miniheroes-sprite-wraith_king {
     background-position: -224px -288px;
 }
-.miniheroes-sprite-skeleton_king {
+.miniheroes-sprite-wraith_king {
     background-position: -256px -288px;
 }
 .miniheroes-sprite-skywrath_mage, .miniheroes-sprite-slardar, .miniheroes-sprite-slark {
@@ -517,7 +517,7 @@
 .miniheroes-sprite-weaver {
     background-position: -352px -224px;
 }
-.miniheroes-sprite-windrunner, .miniheroes-sprite-winter_wyvern, .miniheroes-sprite-wisp {
+.miniheroes-sprite-windranger, .miniheroes-sprite-winter_wyvern, .miniheroes-sprite-wisp {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -352px -256px;
     width: 32px;
