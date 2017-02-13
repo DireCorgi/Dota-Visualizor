@@ -293,6 +293,10 @@ table.player-legend {
   stroke: black;
 }
 
+.item-dot:hover {
+  cursor: crosshair;
+}
+
 .radiant-dot {
   fill:#8CA525;
 }
@@ -303,4 +307,43 @@ table.player-legend {
 
 .item-tooltip {
   position: absolute;
+  border-radius: 100%;
+  border: 1px solid #111;
+  pointer-events: none;
+}
+
+.item-tooltip > h3, h4 {
+  font-size: 14px;
+  text-align: center;
+  color: white;
+  text-shadow: 0 0 5px black;
+}
+
+.item-tooltip > h4 {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,.35);
+  padding: 0 4px;
+  border-radius: 50%;
+}
+
+.item-area {
+  position: relative;
+  margin: auto;
+  width: 1002px;
+}
+
+line.item-line {
+  stroke: #777;
+  stroke-width: 2;
+}
+
+.item-hero-legend {
+  position: absolute;
+  left: 48px;
+  border-radius: 50%;
+  border: 2px solid #111;
+  background-color: rgba(212,248,255,.35);
 }

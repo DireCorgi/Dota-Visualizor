@@ -177,10 +177,11 @@
 	
 	  var buttons = (0, _buttons2.default)();
 	  var dotaData = null;
+	  var tooltip = d3.select('body').append('div').attr('class', 'item-tooltip').style('opacity', 0);
 	
 	  var clearGraphs = function clearGraphs(e) {
 	    d3.select('section.chart').selectAll('svg').remove();
-	    d3.select('section.chart').selectAll('div.player-area').remove();
+	    d3.select('section.chart').selectAll('div').remove();
 	  };
 	
 	  var handleGraphAdv = function handleGraphAdv(e) {
@@ -235,6 +236,7 @@
 	    setTimeout(function () {
 	      buttons.advButton.className = '';
 	      buttons.clearButton.className = '';
+	      buttons.itemButton.className = '';
 	    }, 1);
 	
 	    var _setTableArea2 = _setTableArea(),
@@ -245,12 +247,14 @@
 	  };
 	
 	  var graphItems = function graphItems(e) {
+	    clearGraphs();
 	    if (dotaData.players) {
 	      (0, _graph_items2.default)({
 	        playersData: dotaData.players,
 	        height: height,
 	        width: width,
-	        id: 'items-area'
+	        id: 'items-area',
+	        tooltip: tooltip
 	      });
 	    } else {
 	      dotaData.then(function (data) {
@@ -258,7 +262,8 @@
 	          playersData: data.players,
 	          height: height,
 	          width: width,
-	          id: 'items-area'
+	          id: 'items-area',
+	          tooltip: tooltip
 	        });
 	      });
 	    }
@@ -30252,7 +30257,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.getPlayersNetWorth = exports.parsePlayers = undefined;
+	exports.formatTime = exports.getItemName = exports.getPlayersNetWorth = exports.parsePlayers = undefined;
 	
 	var _d = __webpack_require__(6);
 	
@@ -30293,6 +30298,26 @@
 	    };
 	  });
 	  return { data: data, maximum: maximum };
+	};
+	
+	var getItemName = exports.getItemName = function getItemName(item) {
+	  return item.replace(/_/g, ' ');
+	};
+	
+	var formatTime = exports.formatTime = function formatTime(secs) {
+	  var sign = '';
+	  var totalSeconds = secs;
+	  if (secs < 0) {
+	    sign = '-';
+	    totalSeconds = totalSeconds * -1;
+	  }
+	  var minutes = Math.floor(totalSeconds / 60);
+	  var seconds = Math.floor(totalSeconds % 60);
+	  if (minutes < 10) minutes = '0' + minutes;
+	  if (minutes === 0) minutes = '00';
+	  if (seconds < 10) seconds = '0' + seconds;
+	  if (seconds === 0) seconds = '00';
+	  return '' + sign + minutes + ':' + seconds;
 	};
 
 /***/ },
@@ -30418,16 +30443,24 @@
 	
 	var d3 = _interopRequireWildcard(_d);
 	
+	var _util = __webpack_require__(10);
+	
+	var _hero_ids = __webpack_require__(9);
+	
+	var _hero_ids2 = _interopRequireDefault(_hero_ids);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
 	function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 	
 	var graphItemProgression = function graphItemProgression(options) {
 	  var playersData = options.playersData,
 	      width = options.width,
 	      height = options.height,
-	      id = options.id;
+	      id = options.id,
+	      tooltip = options.tooltip;
 	
 	  var xOffset = 80;
-	
 	  if (id) d3.select('#' + id).remove();
 	  var chartArea = d3.select('section.chart').append('div').attr('class', 'item-area');
 	  var chart = chartArea.append('svg').attr('width', width).attr('height', height).attr('id', id).style('background-color', 'rgb(36, 47, 57)');
@@ -30443,11 +30476,11 @@
 	
 	  var xScale = d3.scaleLinear().domain([-120, maxTime]).range([xOffset, width - 10]);
 	
-	  var yScale = d3.scaleLinear().domain([0, 9]).range([height - 80, 80]);
-	
-	  var tooltip = d3.select('.item-area').append('div').attr('class', 'item-tooltip').style('opacity', 0);
+	  var yScale = d3.scaleLinear().domain([9, 0]).range([height - 80, 80]);
 	
 	  data.forEach(function (purchaseLog, idx) {
+	    chart.append('line').attr('class', 'item-line').attr('x1', xOffset).attr('x2', width).attr('y1', yScale(idx)).attr('y2', yScale(idx));
+	
 	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', function (d) {
 	      if (idx > 4) {
 	        return 'item-dot radiant-dot';
@@ -30457,12 +30490,31 @@
 	    }).attr('r', 8).attr('cx', function (d) {
 	      return xScale(d.time);
 	    }).attr('cy', yScale(idx)).on('mouseover', function (d) {
-	      tooltip.transition().duration(200).style('opacity', 0.9);
-	      tooltip.html(d.key).style('left', d3.event.pageX + 10 + 'px').style('top', d3.event.pageY - 30 + 'px');
+	      tooltip.transition().duration(150).style('opacity', 0.9);
+	      tooltip.html('<h3>' + (0, _util.getItemName)(d.key) + '</h3><h4>' + (0, _util.formatTime)(d.time) + '</h4>').attr('class', 'items-sprite-' + d.key + ' item-tooltip').style('left', d3.event.pageX + 10 + 'px').style('top', d3.event.pageY - 30 + 'px');
 	    }).on('mouseout', function (d) {
-	      tooltip.transition().duration(300).style('opacity', 0);
+	      tooltip.transition().duration(220).style('opacity', 0);
 	    });
 	  });
+	
+	  var legendData = playersData.map(function (playerData) {
+	    return _hero_ids2.default[playerData.hero_id - 1].localized_name;
+	  });
+	
+	  chartArea.selectAll('div').data(legendData).enter().append('div').attr('class', function (d) {
+	    var heroName = d;
+	    heroName = heroName.toLowerCase();
+	    heroName = heroName.replace(/ /g, "_");
+	    return 'miniheroes-sprite-' + heroName + ' item-hero-legend';
+	  }).style('top', function (d, idx) {
+	    return yScale(idx) - 21 + 'px';
+	  });
+	
+	  chart.append('text').attr('x', xOffset + 20 + width / 2).attr('y', 40).attr('text-anchor', 'middle').attr('class', 'title-text').text('Item Progression');
+	
+	  $('html, body').animate({
+	    scrollTop: $("#items-area").offset().top
+	  }, 800);
 	};
 	
 	exports.default = graphItemProgression;
