@@ -30474,12 +30474,12 @@
 	    if (curTime > maxTime) maxTime = curTime;
 	  });
 	
-	  var xScale = d3.scaleLinear().domain([-120, maxTime]).range([xOffset, width - 10]);
+	  var xScale = d3.scaleLinear().domain([-120, maxTime]).range([xOffset, width - 50]);
 	
 	  var yScale = d3.scaleLinear().domain([9, 0]).range([height - 80, 80]);
 	
 	  data.forEach(function (purchaseLog, idx) {
-	    chart.append('line').attr('class', 'item-line').attr('x1', xOffset).attr('x2', width).attr('y1', yScale(idx)).attr('y2', yScale(idx));
+	    chart.append('line').attr('class', 'item-line').attr('x1', xOffset).attr('x2', width - 40).attr('y1', yScale(idx)).attr('y2', yScale(idx));
 	
 	    chart.selectAll('dot').data(purchaseLog).enter().append('circle').attr('class', function (d) {
 	      if (idx > 4) {
