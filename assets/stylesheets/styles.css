@@ -350,7 +350,7 @@ line.item-line {
 
 .consumable-item-dot {
   r: 6;
-  stroke: #003f4d;
+  stroke: #222;
 }
 
 .basic-item-dot {
@@ -381,4 +381,12 @@ line.item-line {
   r: 12;
   stroke: #2F023B;
   stroke-width: 3.5;
+}
+
+.item-hero-legend-dire {
+  background-color: #5b3f42;
+}
+
+.item-hero-legend-radiant {
+  background-color: #395546;
 }

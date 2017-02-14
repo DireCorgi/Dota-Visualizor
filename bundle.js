@@ -30532,16 +30532,26 @@
 	    return _hero_ids2.default[playerData.hero_id - 1].localized_name;
 	  });
 	
-	  chartArea.selectAll('div').data(legendData).enter().append('div').attr('class', function (d) {
+	  chartArea.selectAll('div').data(legendData).enter().append('div').attr('class', function (d, idx) {
 	    var heroName = d;
+	    var side = 'radiant';
+	    if (idx > 4) side = 'dire';
 	    heroName = heroName.toLowerCase();
 	    heroName = heroName.replace(/ /g, "_");
-	    return 'miniheroes-sprite-' + heroName + ' item-hero-legend';
+	    return 'miniheroes-sprite-' + heroName + ' item-hero-legend item-hero-legend-' + side;
 	  }).style('top', function (d, idx) {
 	    return yScale(idx) - 21 + 'px';
 	  });
 	
 	  chart.append('text').attr('x', xOffset + 20 + width / 2).attr('y', 40).attr('text-anchor', 'middle').attr('class', 'title-text').text('Item Progression');
+	
+	  var xAxisScale = d3.scaleLinear().domain([-2, maxTime / 60]).range([xOffset, width - 40]);
+	
+	  var xAxis = d3.axisBottom(xAxisScale).tickArguments([8]);
+	  var horizontalGuide = chart.append('g');
+	  horizontalGuide.attr('transform', 'translate(0, 660)');
+	  xAxis(horizontalGuide);
+	  horizontalGuide.selectAll('text').attr('x', '5');
 	
 	  $('html, body').animate({
 	    scrollTop: $("#items-area").offset().top
