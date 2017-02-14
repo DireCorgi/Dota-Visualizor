@@ -481,13 +481,13 @@
 .miniheroes-sprite-undying {
     background-position: -288px -320px;
 }
-.miniheroes-sprite-ursa, .miniheroes-sprite-vengefulspirit, .miniheroes-sprite-venomancer {
+.miniheroes-sprite-ursa, .miniheroes-sprite-vengeful_spirit, .miniheroes-sprite-venomancer {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -320px -320px;
     width: 32px;
     height: 32px;
 }
-.miniheroes-sprite-vengefulspirit, .miniheroes-sprite-venomancer {
+.miniheroes-sprite-vengeful_spirit, .miniheroes-sprite-venomancer {
     background-position: -352px 0;
 }
 .miniheroes-sprite-venomancer {

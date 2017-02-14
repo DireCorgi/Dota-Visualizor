@@ -347,3 +347,38 @@ line.item-line {
   border: 2px solid #111;
   background-color: rgba(212,248,255,.35);
 }
+
+.consumable-item-dot {
+  r: 6;
+  stroke: #003f4d;
+}
+
+.basic-item-dot {
+  r: 8;
+  stroke: #eee;
+  stroke-width: 1.5;
+}
+
+.common-item-dot {
+  r: 9;
+  stroke: #5251C8;
+  stroke-width: 2;
+}
+
+.rare-item-dot {
+  r: 10;
+  stroke: #F5EF51;
+  stroke-width: 2.5;
+}
+
+.legendary-item-dot {
+  r: 11;
+  stroke: #CF702E;
+  stroke-width: 3;
+}
+
+.epic-item-dot {
+  r: 12;
+  stroke: #2F023B;
+  stroke-width: 3.5;
+}
