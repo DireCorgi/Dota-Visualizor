@@ -30488,9 +30488,10 @@
 	
 	  var yScale = d3.scaleLinear().domain([9, 0]).range([height - 80, 80]);
 	
-	  var zigZagOffset = 0;
+	  var zigZagOffset = void 0;
 	
 	  data.forEach(function (purchaseLog, idx) {
+	    zigZagOffset = 0;
 	    chart.append('line').attr('class', 'item-line').attr('x1', xOffset).attr('x2', width - 40).attr('y1', yScale(idx)).attr('y2', yScale(idx));
 	
 	    function yZigZag(d) {
@@ -30960,7 +30961,7 @@
 	  },
 	  "skadi": {
 	    formattedName: 'Eye of Skadi',
-	    category: 'lengendary'
+	    category: 'legendary'
 	  },
 	  "shivas_guard": {
 	    formattedName: 'Shiva\'s Guard',
@@ -30968,7 +30969,7 @@
 	  },
 	  "sheepstick": {
 	    formattedName: 'Scythe of Vyse',
-	    category: 'lengendary'
+	    category: 'legendary'
 	  },
 	  "satanic": {
 	    formattedName: 'Satanic',
@@ -30976,7 +30977,7 @@
 	  },
 	  "sange_and_yasha": {
 	    formattedName: 'Sange and Yasha',
-	    category: 'lengendary'
+	    category: 'legendary'
 	  },
 	  "sange": {
 	    formattedName: 'Sange',
@@ -31048,7 +31049,7 @@
 	  },
 	  "manta": {
 	    formattedName: 'Manta Style',
-	    category: 'lengendary'
+	    category: 'legendary'
 	  },
 	  "lotus_orb": {
 	    formattedName: 'Lotus Orb',

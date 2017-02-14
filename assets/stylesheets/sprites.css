@@ -67,16 +67,16 @@
 .miniheroes-sprite-brewmaster {
     background-position: -128px 0;
 }
-.miniheroes-sprite-bristleback, .miniheroes-sprite-broodmother, .miniheroes-sprite-centaur {
+.miniheroes-sprite-bristleback, .miniheroes-sprite-broodmother, .miniheroes-sprite-centaur_warrunner {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -128px -32px;
     width: 32px;
     height: 32px;
 }
-.miniheroes-sprite-broodmother, .miniheroes-sprite-centaur {
+.miniheroes-sprite-broodmother, .miniheroes-sprite-centaur_warrunner {
     background-position: -128px -64px;
 }
-.miniheroes-sprite-centaur {
+.miniheroes-sprite-centaur_warrunner {
     background-position: -128px -96px;
 }
 .miniheroes-sprite-chaos_knight, .miniheroes-sprite-chen, .miniheroes-sprite-clinkz {
@@ -244,7 +244,7 @@
 .miniheroes-sprite-lycan {
     background-position: -128px -224px;
 }
-.miniheroes-sprite-magnataur, .miniheroes-sprite-medusa, .miniheroes-sprite-meepo {
+.miniheroes-sprite-magnus, .miniheroes-sprite-medusa, .miniheroes-sprite-meepo {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -160px -224px;
     width: 32px;
@@ -337,16 +337,16 @@
 .miniheroes-sprite-pudge {
     background-position: -288px -64px;
 }
-.miniheroes-sprite-pugna, .miniheroes-sprite-queenofpain, .miniheroes-sprite-rattletrap {
+.miniheroes-sprite-pugna, .miniheroes-sprite-queenofpain, .miniheroes-sprite-clockwerk {
     background-image: url(../images/miniheroes_sprite.png);
     background-position: -288px -96px;
     width: 32px;
     height: 32px;
 }
-.miniheroes-sprite-queenofpain, .miniheroes-sprite-rattletrap {
+.miniheroes-sprite-queenofpain, .miniheroes-sprite-clockwerk {
     background-position: -288px -128px;
 }
-.miniheroes-sprite-rattletrap {
+.miniheroes-sprite-clockwerk {
     background-position: -288px -160px;
 }
 .miniheroes-sprite-razor, .miniheroes-sprite-riki, .miniheroes-sprite-rikimaru {
